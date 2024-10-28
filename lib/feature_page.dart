@@ -43,15 +43,11 @@ class _FeaturePageState extends State<FeaturePage> {
   }
 
 
-  final List<Category> categories  = [
+  final List<Category> categories = [
     Category(icon: Icons.food_bank_outlined, label: "Foods", page: const FoodPage()),
-    Category(icon: Icons.blur_circular_sharp, label: "Simulation", page: Container()),
-    Category(icon: Icons.gamepad_outlined, label: "Puzzle", page: Container()),
-    Category(icon: Icons.directions_car, label: "Racing", page: Container()),
-    Category(icon: Icons.sports_esports, label: "Role Playing", page: Container()),
-    Category(icon: Icons.sports, label: "Sports", page: Container()),
-    Category(icon: Icons.card_giftcard, label: "Card", page: Container()),
-    Category(icon: Icons.menu_book_outlined, label: "Educational", page: Container()),
+    Category(icon: Icons.local_drink_outlined, label: "Drinks", page: Container()),
+    Category(icon: Icons.set_meal_outlined, label: "BBQ", page: Container()),
+    Category(icon: Icons.cake_outlined, label: "Desserts", page: Container()),
   ];
 
   @override

@@ -39,23 +39,8 @@ class _ProfilePageState extends State<ProfilePage> {
             fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black
         ),),
       ),
-      body: Column(
-        children: [
-          const Center(
-            child: Text('Welcome to Profile Page!', style: TextStyle(
-                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black
-            ),),
-          ),
-          Center(
-            child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const Home()));
-                },
-                child: const Text('Back to Home'),
-            ),
-          ),
-        ],
+      body: Center(
+        child: Image.asset('assets/profile.png'),
       ),
 
       bottomNavigationBar: NavigationBar(
