@@ -20,7 +20,9 @@ class _ProductItemState extends State<ProductItem> {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: Image.network(widget.product.image ?? 'Unknown', width: 50,),
+      leading: Image.network(
+        widget.product.image ?? '',width: 50,
+      ),
       title: Text(widget.product.productName ?? 'Unknown'),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +36,7 @@ class _ProductItemState extends State<ProductItem> {
       trailing: Wrap(
         children: [
           IconButton(onPressed: () {
-            _deleteProduct(widget.product.id.toString());
+            _dialogBuilder(context);
           }, icon: const Icon(Icons.delete_sharp),),
           IconButton(onPressed: () {
             Navigator.pushNamed(
@@ -52,7 +54,7 @@ class _ProductItemState extends State<ProductItem> {
     if (response.statusCode == 200) {
       ScaffoldMessenger.of(context)
           .showSnackBar(
-        const SnackBar(content: Text('ProductDelete Successful!')),);
+        const SnackBar(content: Text('ProductDelete Successful!')));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Product Delete failed!')),
@@ -60,4 +62,27 @@ class _ProductItemState extends State<ProductItem> {
       setState(() {});
     }
   }
+
+  Future<void> _dialogBuilder(BuildContext context) async{
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Are you sure..??'),
+          content: Text(
+              "To continue delete '${widget.product.productName}',\n press 'Ok'"),
+          actions: [
+            TextButton(onPressed: () {
+              Navigator.pop(context);
+            }, child: const Text('Cancel')),
+            TextButton(onPressed: () {
+              _deleteProduct(widget.product.id.toString());
+              Navigator.pop(context);
+            }, child: const Text('Ok'))
+          ],
+        );
+      }
+    );
+  }
+
 }

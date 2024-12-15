@@ -58,7 +58,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
         },
         child: const Icon(Icons.add_sharp),
       ),
-
     );
   }
 
